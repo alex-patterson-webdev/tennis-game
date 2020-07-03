@@ -24,11 +24,11 @@ class TennisGame
     private int $playerTwoPoints = 0;
 
     /**
-     * A static map of tennis points to their corresponding string values.
+     * A static map of tennis points to their corresponding string names.
      *
      * @var string[]
      */
-    private static array $pointValueMap = [
+    private static array $pointNames = [
         0 => TennisPoint::LOVE,
         1 => TennisPoint::FIFTEEN,
         2 => TennisPoint::THIRTY,
@@ -37,11 +37,27 @@ class TennisGame
     ];
 
     /**
+     * Add points to player one.
+     */
+    public function playerOneWinsShot(): void
+    {
+        $this->playerOnePoints++;
+    }
+
+    /**
+     * Add points to player one.
+     */
+    public function playerTwoWinsShot(): void
+    {
+        $this->playerTwoPoints++;
+    }
+
+    /**
      * @return string
      */
     public function renderScore(): string
     {
-        return $this->getPlayerScore($this->playerOnePoints) . '-' . $this->getPlayerScore($this->playerTwoPoints);
+        return $this->getPointsName($this->playerOnePoints) . '-' . $this->getPointsName($this->playerTwoPoints);
     }
 
     /**
@@ -53,14 +69,14 @@ class TennisGame
      *
      * @throws TennisGameException  If the provided players points are invalid
      */
-    private function getPlayerScore(int $points): string
+    private function getPointsName(int $points): string
     {
-        if (!isset(static::$pointValueMap[$points])) {
+        if (!isset(static::$pointNames[$points])) {
             throw new TennisGameException(
                 sprintf('Invalid tennis points value \'%d\'', $points)
             );
         }
 
-        return static::$pointValueMap[$points];
+        return static::$pointNames[$points];
     }
 }
