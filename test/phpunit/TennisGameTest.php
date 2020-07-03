@@ -120,6 +120,26 @@ final class TennisGameTest extends TestCase
                 0,
                 0
             ],
+            [
+                TennisPoint::FIFTEEN . '-' . TennisPoint::LOVE,
+                1,
+                0
+            ],
+            [
+                TennisPoint::THIRTY. '-' . TennisPoint::LOVE,
+                2,
+                0
+            ],
+            [
+                TennisPoint::FORTY . '-' . TennisPoint::LOVE,
+                3,
+                0
+            ],
+            [
+                TennisPoint::WIN . '-' . TennisPoint::LOVE,
+                4,
+                0
+            ],
         ];
     }
 }
