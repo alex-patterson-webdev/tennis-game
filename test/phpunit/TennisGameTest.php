@@ -67,6 +67,7 @@ final class TennisGameTest extends TestCase
      *
      * @covers \Arp\TennisGame\TennisGame::playerOneWinsShot
      * @covers \Arp\TennisGame\TennisGame::playerTwoWinsShot
+     * @covers \Arp\TennisGame\TennisGame::getPointsName
      * @covers \Arp\TennisGame\TennisGame::renderScore
      */
     public function testBothPlayersScore(): void
@@ -88,9 +89,11 @@ final class TennisGameTest extends TestCase
      * @param int    $playerOnePoints The points of player one
      * @param int    $playerTwoPoints The points of player two
      *
-     * @covers \Arp\TennisGame\TennisGame::playerOneWinsShot
-     * @covers \Arp\TennisGame\TennisGame::playerTwoWinsShot
+     * @covers \Arp\TennisGame\TennisGame::isDeuce
+     * @covers \Arp\TennisGame\TennisGame::isAdvantageScore
+     * @covers \Arp\TennisGame\TennisGame::isWinningScore
      * @covers \Arp\TennisGame\TennisGame::renderScore
+     * @covers \Arp\TennisGame\TennisGame::compareScores
      *
      * @dataProvider getAllScoreCombinationsData
      */
@@ -136,6 +139,10 @@ final class TennisGameTest extends TestCase
             [TennisPoint::LOVE . '-' . TennisPoint::FORTY, 0, 3],
             [TennisPoint::FIFTEEN . '-' . TennisPoint::FORTY, 1, 3],
             [TennisPoint::THIRTY . '-' . TennisPoint::FORTY, 2, 3],
+
+            [TennisPoint::LOVE . '-' . TennisPoint::WIN, 0, 4],
+            [TennisPoint::FIFTEEN . '-' . TennisPoint::WIN, 1, 4],
+            [TennisPoint::THIRTY . '-' . TennisPoint::WIN, 2, 4],
 
             // Deuce
             [TennisPoint::DEUCE, 3, 3],

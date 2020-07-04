@@ -32,7 +32,8 @@ final class TennisGame
         0 => TennisPoint::LOVE,
         1 => TennisPoint::FIFTEEN,
         2 => TennisPoint::THIRTY,
-        3 => TennisPoint::FORTY
+        3 => TennisPoint::FORTY,
+        4 => TennisPoint::WIN
     ];
 
     /**
@@ -60,14 +61,20 @@ final class TennisGame
             return TennisPoint::DEUCE;
         }
 
-        // Is player 1 the winner?
         if ($this->isWinningScore($this->playerOnePoints, $this->playerTwoPoints)) {
             return TennisPoint::WIN . '-' . $this->getPointsName($this->playerTwoPoints);
         }
 
-        // Is player 2 the winner?
         if ($this->isWinningScore($this->playerTwoPoints, $this->playerOnePoints)) {
-            return $this->getPointsName($this->playerTwoPoints) . '-' . TennisPoint::WIN;
+            return $this->getPointsName($this->playerOnePoints) . '-' . TennisPoint::WIN;
+        }
+
+        if ($this->isAdvantageScore($this->playerOnePoints, $this->playerTwoPoints)) {
+            return TennisPoint::ADVANTAGE . ' Player One';
+        }
+
+        if ($this->isAdvantageScore($this->playerTwoPoints, $this->playerOnePoints)) {
+            return TennisPoint::ADVANTAGE . ' Player Two';
         }
 
         return $this->getPointsName($this->playerOnePoints) . '-' . $this->getPointsName($this->playerTwoPoints);
@@ -81,6 +88,19 @@ final class TennisGame
     private function isDeuce(): bool
     {
         return $this->playerOnePoints >= 3 && 0 === $this->compareScores();
+    }
+
+    /**
+     * Check if the provided $checkScore is an advantage point compared with $compareScore.
+     *
+     * @param int $checkScore   The score that should be checked for an advantage point status.
+     * @param int $compareScore The players score that should be compared with the $checkScore.
+     *
+     * @return bool
+     */
+    private function isAdvantageScore(int $checkScore, int $compareScore): bool
+    {
+        return ($checkScore >= 4 && $checkScore >= ($compareScore + 1));
     }
 
     /**
