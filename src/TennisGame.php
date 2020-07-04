@@ -11,7 +11,7 @@ use Arp\TennisGame\Exception\TennisGameException;
  * @author  Alex Patterson <alex.patterson.webdev@gmail.com>
  * @package Arp\TennisGame
  */
-class TennisGame
+final class TennisGame
 {
     /**
      * @var int
@@ -32,8 +32,7 @@ class TennisGame
         0 => TennisPoint::LOVE,
         1 => TennisPoint::FIFTEEN,
         2 => TennisPoint::THIRTY,
-        3 => TennisPoint::FORTY,
-        6 => TennisPoint::WIN,
+        3 => TennisPoint::FORTY
     ];
 
     /**
@@ -57,26 +56,40 @@ class TennisGame
      */
     public function renderScore(): string
     {
+        if ($this->playerOnePoints >= 3 && 0 === $this->compareScores()) {
+            return TennisPoint::DEUCE;
+        }
+
         return $this->getPointsName($this->playerOnePoints) . '-' . $this->getPointsName($this->playerTwoPoints);
     }
 
     /**
-     * Return a string representation for the provided $points.
+     * Compare the players scores
      *
-     * @param int $points
+     * @return int
+     */
+    private function compareScores(): int
+    {
+        return $this->playerOnePoints <=> $this->playerTwoPoints;
+    }
+
+    /**
+     * Return a string representation for the provided $pointsValue.
+     *
+     * @param int $pointsValue
      *
      * @return string
      *
      * @throws TennisGameException  If the provided players points are invalid
      */
-    private function getPointsName(int $points): string
+    private function getPointsName(int $pointsValue): string
     {
-        if (!isset(static::$pointNames[$points])) {
+        if (!isset(static::$pointNames[$pointsValue])) {
             throw new TennisGameException(
-                sprintf('Invalid tennis points value \'%d\'', $points)
+                sprintf('Unable to find name for points value \'%d\'', $pointsValue)
             );
         }
 
-        return static::$pointNames[$points];
+        return static::$pointNames[$pointsValue];
     }
 }
