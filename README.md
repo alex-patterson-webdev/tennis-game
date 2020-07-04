@@ -36,7 +36,7 @@ where `x` represents the first players' score and `y` represents the seconds pla
     echo $tennisGame->renderScore(); // output string 'fifteen-love'
     
     $tennisGame->playerTwoWinsShot();
-    $tennisGame->playerOneWinsShot(); // output string 'fifteen-fifteen'
+    echo $tennisGame->renderScore(); // output string 'fifteen-fifteen'
     
 In accordance with the rules of Tennis, when players tie and have both reached a score of at least `forty`, then the result of 
 the call to `renderScore()` will be `deuce`, indicating the scores are level.
@@ -65,7 +65,7 @@ In these cases, calls to method `renderScore()` will display the player who has 
         
     echo $tennisGame->renderScore(); // output string 'advantage player two';
 
-In order to win the game, players must score a minimum of `forty` points and have at least two points more than the competing player.
+In order to win the game, players must have a score which exceeds `forty` points and have at least two points more than the competing player.
 Calls to `renderScore()` will show the winner in the same `x-y` string format. 
 
 The example below show player two as the winner.
