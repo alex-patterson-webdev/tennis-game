@@ -92,7 +92,6 @@ final class TennisGameTest extends TestCase
      * @covers \Arp\TennisGame\TennisGame::isAdvantageScore
      * @covers \Arp\TennisGame\TennisGame::isWinningScore
      * @covers \Arp\TennisGame\TennisGame::renderScore
-     * @covers \Arp\TennisGame\TennisGame::compareScores
      *
      * @dataProvider getAllScoreCombinationsData
      */

@@ -86,7 +86,7 @@ final class TennisGame
      */
     private function isDeuce(): bool
     {
-        return $this->playerOnePoints >= 3 && 0 === $this->compareScores();
+        return ($this->playerOnePoints >= 3) && 0 === ($this->playerOnePoints <=> $this->playerTwoPoints);
     }
 
     /**
@@ -113,15 +113,5 @@ final class TennisGame
     private function isWinningScore(int $checkScore, int $compareScore): bool
     {
         return ($checkScore >= 4 && $checkScore >= ($compareScore + 2));
-    }
-
-    /**
-     * Compare the players scores
-     *
-     * @return int
-     */
-    private function compareScores(): int
-    {
-        return $this->playerOnePoints <=> $this->playerTwoPoints;
     }
 }
