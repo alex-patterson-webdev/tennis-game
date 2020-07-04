@@ -60,6 +60,14 @@ final class TennisGame
             return TennisPoint::DEUCE;
         }
 
+        if ($this->playerOnePoints >= 4 && $this->playerOnePoints >= ($this->playerTwoPoints + 2)) {
+            return TennisPoint::WIN . '-' . $this->getPointsName($this->playerTwoPoints);
+        }
+
+        if ($this->playerTwoPoints >= 4 && $this->playerTwoPoints >= ($this->playerOnePoints + 2)) {
+            return $this->getPointsName($this->playerTwoPoints) . '-' . TennisPoint::WIN;
+        }
+
         return $this->getPointsName($this->playerOnePoints) . '-' . $this->getPointsName($this->playerTwoPoints);
     }
 

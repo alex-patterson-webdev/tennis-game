@@ -14,5 +14,7 @@ final class TennisPoint
     public const FIFTEEN = 'fifteen';
     public const THIRTY = 'thirty';
     public const FORTY = 'forty';
+    public const DEUCE = 'deuce';
+    public const ADVANTAGE = 'advantage';
     public const WIN = 'win';
 }
