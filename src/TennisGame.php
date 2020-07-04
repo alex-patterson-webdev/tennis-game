@@ -56,7 +56,7 @@ final class TennisGame
      */
     public function renderScore(): string
     {
-        if ($this->playerOnePoints >= 3 && 0 === $this->compareScores()) {
+        if ($this->isDeuce()) {
             return TennisPoint::DEUCE;
         }
 
@@ -69,6 +69,16 @@ final class TennisGame
         }
 
         return $this->getPointsName($this->playerOnePoints) . '-' . $this->getPointsName($this->playerTwoPoints);
+    }
+
+    /**
+     * Check if the score is deuce.
+     *
+     * @return bool
+     */
+    private function isDeuce(): bool
+    {
+        return $this->playerOnePoints >= 3 && 0 === $this->compareScores();
     }
 
     /**
