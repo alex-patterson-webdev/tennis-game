@@ -115,31 +115,28 @@ final class TennisGameTest extends TestCase
     public function getAllScoreCombinationsData(): array
     {
         return [
-            [
-                TennisPoint::LOVE . '-' . TennisPoint::LOVE,
-                0,
-                0
-            ],
-            [
-                TennisPoint::FIFTEEN . '-' . TennisPoint::LOVE,
-                1,
-                0
-            ],
-            [
-                TennisPoint::THIRTY. '-' . TennisPoint::LOVE,
-                2,
-                0
-            ],
-            [
-                TennisPoint::FORTY . '-' . TennisPoint::LOVE,
-                3,
-                0
-            ],
-            [
-                TennisPoint::WIN . '-' . TennisPoint::LOVE,
-                4,
-                0
-            ],
+            [TennisPoint::LOVE . '-' . TennisPoint::LOVE, 0, 0],
+            [TennisPoint::FIFTEEN . '-' . TennisPoint::LOVE, 1, 0],
+            [TennisPoint::THIRTY . '-' . TennisPoint::LOVE, 2, 0],
+            [TennisPoint::FORTY . '-' . TennisPoint::LOVE, 3, 0],
+            [TennisPoint::WIN . '-' . TennisPoint::LOVE, 4, 0],
+
+            [TennisPoint::LOVE . '-' . TennisPoint::FIFTEEN, 0, 1],
+            [TennisPoint::FIFTEEN . '-' . TennisPoint::FIFTEEN, 1, 1],
+            [TennisPoint::THIRTY . '-' . TennisPoint::FIFTEEN, 2, 1],
+            [TennisPoint::FORTY . '-' . TennisPoint::FIFTEEN, 3, 1],
+            [TennisPoint::WIN . '-' . TennisPoint::FIFTEEN, 4, 1],
+
+            [TennisPoint::LOVE . '-' . TennisPoint::THIRTY, 0, 2],
+            [TennisPoint::FIFTEEN . '-' . TennisPoint::THIRTY, 1, 2],
+            [TennisPoint::THIRTY . '-' . TennisPoint::THIRTY, 2, 2],
+            [TennisPoint::FORTY . '-' . TennisPoint::THIRTY, 3, 2],
+            [TennisPoint::WIN . '-' . TennisPoint::THIRTY, 4, 2],
+
+            [TennisPoint::LOVE . '-' . TennisPoint::FORTY, 0, 3],
+            [TennisPoint::FIFTEEN . '-' . TennisPoint::FORTY, 1, 3],
+            [TennisPoint::THIRTY . '-' . TennisPoint::FORTY, 2, 3],
+
         ];
     }
 }
