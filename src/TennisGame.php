@@ -60,11 +60,13 @@ final class TennisGame
             return TennisPoint::DEUCE;
         }
 
-        if ($this->playerOnePoints >= 4 && $this->playerOnePoints >= ($this->playerTwoPoints + 2)) {
+        // Is player 1 the winner?
+        if ($this->isWinningScore($this->playerOnePoints, $this->playerTwoPoints)) {
             return TennisPoint::WIN . '-' . $this->getPointsName($this->playerTwoPoints);
         }
 
-        if ($this->playerTwoPoints >= 4 && $this->playerTwoPoints >= ($this->playerOnePoints + 2)) {
+        // Is player 2 the winner?
+        if ($this->isWinningScore($this->playerTwoPoints, $this->playerOnePoints)) {
             return $this->getPointsName($this->playerTwoPoints) . '-' . TennisPoint::WIN;
         }
 
@@ -79,6 +81,19 @@ final class TennisGame
     private function isDeuce(): bool
     {
         return $this->playerOnePoints >= 3 && 0 === $this->compareScores();
+    }
+
+    /**
+     * Check if the provided $checkScore is a winning score when compared tgo $compareScore.
+     *
+     * @param int $checkScore   The score that should be checked for winning status.
+     * @param int $compareScore The score that should be compared.
+     *
+     * @return bool
+     */
+    private function isWinningScore(int $checkScore, int $compareScore): bool
+    {
+        return ($checkScore >= 4 && $checkScore >= ($compareScore + 2));
     }
 
     /**
