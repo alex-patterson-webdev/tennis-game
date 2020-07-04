@@ -137,6 +137,19 @@ final class TennisGameTest extends TestCase
             [TennisPoint::FIFTEEN . '-' . TennisPoint::FORTY, 1, 3],
             [TennisPoint::THIRTY . '-' . TennisPoint::FORTY, 2, 3],
 
+            // Deuce
+            [TennisPoint::DEUCE, 3, 3],
+            [TennisPoint::DEUCE, 4, 4],
+            [TennisPoint::DEUCE, 8, 8],
+            [TennisPoint::DEUCE, 35, 35],
+            [TennisPoint::DEUCE, 75, 75],
+
+            // Advantage
+
+
+            // Wins
+
+
         ];
     }
 }
