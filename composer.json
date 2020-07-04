@@ -1,5 +1,5 @@
 {
-  "name": "alex-patterson-webdev/arp-tennis-game",
+  "name": "alex-patterson-webdev/tennis-game",
   "description": "Simple Tennis score calculator",
   "require": {
     "php": ">=7.4"
