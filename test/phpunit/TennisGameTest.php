@@ -145,11 +145,12 @@ final class TennisGameTest extends TestCase
             [TennisPoint::DEUCE, 75, 75],
 
             // Advantage
-
-
-            // Wins
-
-
+            [TennisPoint::ADVANTAGE . ' Player One', 4, 3],
+            [TennisPoint::ADVANTAGE . ' Player Two', 3, 4],
+            [TennisPoint::ADVANTAGE . ' Player One', 8, 7],
+            [TennisPoint::ADVANTAGE . ' Player Two', 7, 8],
+            [TennisPoint::ADVANTAGE . ' Player One', 101, 100],
+            [TennisPoint::ADVANTAGE . ' Player Two', 99, 100],
         ];
     }
 }
