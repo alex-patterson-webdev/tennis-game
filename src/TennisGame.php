@@ -61,11 +61,11 @@ final class TennisGame
         }
 
         if ($this->isWinningScore($this->playerOnePoints, $this->playerTwoPoints)) {
-            return TennisPoint::WIN . '-' . $this->getPointsName($this->playerTwoPoints);
+            return TennisPoint::WIN . '-' . static::$pointNames[$this->playerTwoPoints];
         }
 
         if ($this->isWinningScore($this->playerTwoPoints, $this->playerOnePoints)) {
-            return $this->getPointsName($this->playerOnePoints) . '-' . TennisPoint::WIN;
+            return static::$pointNames[$this->playerOnePoints] . '-' . TennisPoint::WIN;
         }
 
         if ($this->isAdvantageScore($this->playerOnePoints, $this->playerTwoPoints)) {
@@ -76,7 +76,7 @@ final class TennisGame
             return TennisPoint::ADVANTAGE . ' Player Two';
         }
 
-        return $this->getPointsName($this->playerOnePoints) . '-' . $this->getPointsName($this->playerTwoPoints);
+        return static::$pointNames[$this->playerOnePoints] . '-' . static::$pointNames[$this->playerTwoPoints];
     }
 
     /**
@@ -123,17 +123,5 @@ final class TennisGame
     private function compareScores(): int
     {
         return $this->playerOnePoints <=> $this->playerTwoPoints;
-    }
-
-    /**
-     * Return a string representation for the provided $pointsValue.
-     *
-     * @param int $pointsValue
-     *
-     * @return string
-     */
-    private function getPointsName(int $pointsValue): string
-    {
-        return static::$pointNames[$pointsValue];
     }
 }

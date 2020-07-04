@@ -67,7 +67,6 @@ final class TennisGameTest extends TestCase
      *
      * @covers \Arp\TennisGame\TennisGame::playerOneWinsShot
      * @covers \Arp\TennisGame\TennisGame::playerTwoWinsShot
-     * @covers \Arp\TennisGame\TennisGame::getPointsName
      * @covers \Arp\TennisGame\TennisGame::renderScore
      */
     public function testBothPlayersScore(): void
