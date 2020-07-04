@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Arp\TennisGame;
 
 use Arp\TennisGame\Constant\TennisPoint;
-use Arp\TennisGame\Exception\TennisGameException;
 
 /**
  * @author  Alex Patterson <alex.patterson.webdev@gmail.com>
@@ -132,17 +131,9 @@ final class TennisGame
      * @param int $pointsValue
      *
      * @return string
-     *
-     * @throws TennisGameException  If the provided players points are invalid
      */
     private function getPointsName(int $pointsValue): string
     {
-        if (!isset(static::$pointNames[$pointsValue])) {
-            throw new TennisGameException(
-                sprintf('Unable to find name for points value \'%d\'', $pointsValue)
-            );
-        }
-
         return static::$pointNames[$pointsValue];
     }
 }
