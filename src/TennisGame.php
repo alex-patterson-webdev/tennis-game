@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Arp\TennisGame;
 
+use Arp\TennisGame\Constant\PlayerName;
 use Arp\TennisGame\Constant\TennisPoint;
 
 /**
@@ -32,7 +33,7 @@ final class TennisGame
         1 => TennisPoint::FIFTEEN,
         2 => TennisPoint::THIRTY,
         3 => TennisPoint::FORTY,
-        4 => TennisPoint::WIN
+        4 => TennisPoint::WIN,
     ];
 
     /**
@@ -61,22 +62,31 @@ final class TennisGame
         }
 
         if ($this->isWinningScore($this->playerOnePoints, $this->playerTwoPoints)) {
-            return TennisPoint::WIN . '-' . static::$pointNames[$this->playerTwoPoints];
+            return TennisPoint::WIN . ' ' . PlayerName::PLAYER_ONE;
         }
 
         if ($this->isWinningScore($this->playerTwoPoints, $this->playerOnePoints)) {
-            return static::$pointNames[$this->playerOnePoints] . '-' . TennisPoint::WIN;
+            return TennisPoint::WIN . ' ' . PlayerName::PLAYER_TWO;
         }
 
         if ($this->isAdvantageScore($this->playerOnePoints, $this->playerTwoPoints)) {
-            return TennisPoint::ADVANTAGE . ' Player One';
+            return TennisPoint::ADVANTAGE . ' ' . PlayerName::PLAYER_ONE;
         }
 
         if ($this->isAdvantageScore($this->playerTwoPoints, $this->playerOnePoints)) {
-            return TennisPoint::ADVANTAGE . ' Player Two';
+            return TennisPoint::ADVANTAGE . ' ' . PlayerName::PLAYER_TWO;
         }
 
         return static::$pointNames[$this->playerOnePoints] . '-' . static::$pointNames[$this->playerTwoPoints];
+    }
+
+    /**
+     * Reset the players score back to zero.
+     */
+    public function resetScore(): void
+    {
+        $this->playerOnePoints = 0;
+        $this->playerTwoPoints = 0;
     }
 
     /**
